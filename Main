@@ -1,0 +1,47 @@
+package adamwitkwoskiraincalculator;
+
+import java.util.Scanner;
+
+/**
+ *
+ * @author G00232407
+ */
+public class AdamWItkwoskiRainCalculator {
+
+    public static void main(String[] args) {
+        Scanner keyboard = new Scanner(System.in);
+
+        //Program Start & Variable Init:
+        System.out.println("How many years to calculate?");
+        int yearInput = keyboard.nextInt();
+        int totalMonths = 12;
+        double rainSum = 0;
+
+        //Positive Number error catcher:
+        while (yearInput <= 0) {
+            System.out.println("Need year to be greater than zero!");
+            yearInput = keyboard.nextInt();
+        }
+        //Main loops start:
+        for (int loopStart = 1; loopStart <= yearInput; loopStart++) {
+            System.out.println("Year number " + loopStart);
+            for (int monthLoop = 1; monthLoop < 13; monthLoop++) {
+                System.out.println("How much rainfall for month number " + monthLoop + "?");
+                double rainFallInches = keyboard.nextDouble();
+                while (rainFallInches < 0) {
+                    System.out.println("Need positive number!");
+                    rainFallInches = keyboard.nextInt();
+                }
+                rainSum += rainFallInches;
+            }
+        }
+        
+        //Calculations:
+        System.out.println("The total months are " + totalMonths * yearInput);
+        System.out.println("The total rainfall is " + rainSum + " inches");
+        double averageRainFall = rainSum / (yearInput * 12);
+        System.out.println("The average rainfall is " + averageRainFall + " inches.");
+
+    }
+
+}
